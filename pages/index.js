@@ -4,7 +4,7 @@ const Index = () => {
   return (
     <>
       <Nav />
-      <h1>Hello world</h1>
+      <h1 className="text-sm">Hello world</h1>
     </>
   )
 }
