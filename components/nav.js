@@ -1,17 +1,16 @@
-import '@styles';
 import Link from 'next/link';
 
 const Nav = () => {
   return (
-    <ul>
-      <li>
+    <ul className="flex">
+      <li className="mr-6">
         <Link href="/">
-          <a>Home</a>
+          <a className="text-blue-500 hover:text-blue-800">Home</a>
         </Link>
       </li>
-      <li>
+      <li className="mr-6">
         <Link href="/about">
-          <a>About</a>
+          <a className="text-blue-500 hover:text-blue-800">About</a>
         </Link>
       </li>
     </ul>

@@ -1,10 +1,11 @@
-import Nav from '@components/nav';
+import Base from '@layouts/Base';
 
 const About = () => {
   return (
     <>
-      <Nav />
-      <h1>About</h1>
+      <Base title="About">
+        <h1 className="font-mono text-3xl">About</h1>
+      </Base>
     </>
   )
 }
