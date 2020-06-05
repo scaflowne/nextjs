@@ -27,7 +27,7 @@ const User = (props) => {
 }
 
 User.getInitialProps = async (ctx) => {
-  const res = await fetch(`https://reqres.in/api/users/${ctx.query.id}`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users/${ctx.query.id}`);
   const { data, ad } = await res.json();
   return { user: data, ad: ad }
 }

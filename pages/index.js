@@ -7,7 +7,7 @@ const Index = (props) => {
   return (
     <>
       <Base title="Users">
-        <h1 className="font-mono text-3xl">Users</h1>
+        <h1 className="font-mono text-3xl">Users By {process.env.NEXT_PUBLIC_API_URL}</h1>
         <Users users={props.users} />
       </Base>
     </>
@@ -15,7 +15,7 @@ const Index = (props) => {
 }
 
 Index.getInitialProps = async (ctx) => {
-  const res = await fetch(`https://reqres.in/api/users?page=2`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users?page=2`);
   const { data } = await res.json();
   return { users: data }
 }
