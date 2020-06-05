@@ -1,24 +1,26 @@
 import Base from '@layouts/Base';
 import ArticlesList from '@components/ArticlesList';
 
-import fetch from 'isomorphic-fetch';
-
 const Articles = (props) => {
-  const { articles } = props;
+  const { data } = props;
   return (
     <>
       <Base title="Articles">
-        <h1 className="font-mono text-3xl">News by Drupal</h1>
-        <ArticlesList articles={articles} />
+        <h1 className="font-mono text-3xl">News by {process.env.NEXT_PUBLIC_JSON_API}</h1>
+        <ArticlesList articles={data} />
       </Base>
     </>
   )
 }
 
-Articles.getInitialProps = async (ctx) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_JSON_API}/node/article`);
-  const { data } = await res.json();
-  return { articles: data }
-}
-
 export default Articles;
+
+export async function getServerSideProps() {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_JSON_API}/jsonapi/node/article`);
+    const { data } = await res.json();
+    return { props: { data } }
+  } catch (e) {
+    console.log("catch: ", e);
+  }
+}
