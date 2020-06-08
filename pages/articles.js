@@ -6,7 +6,7 @@ const Articles = (props) => {
   return (
     <>
       <Base title="Articles">
-        <h1 className="font-mono text-3xl">News by {process.env.NEXT_PUBLIC_JSON_API}</h1>
+        <h1 className="font-mono">News by {process.env.NEXT_PUBLIC_JSON_API}</h1>
         <ArticlesList articles={data} />
       </Base>
     </>

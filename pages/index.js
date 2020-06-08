@@ -6,7 +6,7 @@ const Index = (props) => {
   return (
     <>
       <Base title="Users">
-        <h1 className="font-mono text-3xl">Users By {process.env.NEXT_PUBLIC_API_URL}</h1>
+        <h1 className="font-mono">Users By {process.env.NEXT_PUBLIC_API_URL}</h1>
         <Users users={data} />
       </Base>
     </>
