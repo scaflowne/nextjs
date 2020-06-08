@@ -1,4 +1,3 @@
-import fetch from 'isomorphic-fetch';
 import Base from '@layouts/Base';
 
 const User = (props) => {
