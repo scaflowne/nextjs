@@ -13,6 +13,11 @@ const Nav = () => {
           <a className="text-blue-500 hover:text-blue-800">Articles</a>
         </Link>
       </li>
+      <li className="mr-6">
+        <Link href="/articles-graphql">
+          <a className="text-blue-500 hover:text-blue-800">Articles by GraphQl</a>
+        </Link>
+      </li>
     </ul>
   )
 }

@@ -4,7 +4,8 @@
     "paths": {
       "@components/*": ["components/*"],
       "@layouts/*": ["layouts/*"],
-      "@styles": ["assets/styles.scss"]
+      "@styles": ["assets/styles.scss"],
+      "@lib/*": ["lib/*"],
     }
   },
   "exclude": [
