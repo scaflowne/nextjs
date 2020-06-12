@@ -1,4 +1,6 @@
 import Base from '@layouts/Base';
+import ArticlesGraphqlList from '@components/ArticlesGraphqlList';
+
 import { initializeApollo } from '@lib/apolloClient';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
@@ -11,19 +13,16 @@ query {
       ... on NodeArticle {
         title,
         body {
-          value
-          format
-          processed
           summary
-          summaryProcessed
         },
         fieldImage {
-          targetId
           alt
-          title
-          width
-          height
           url
+        },
+        fieldTags {
+          entity {
+            name
+          }
         }
       }
     }
@@ -32,24 +31,15 @@ query {
 `;
 
 
-const ArticlesGraphql = (props) => {
+const ArticlesGraphql = () => {
 
-
-  const { loading, error, data } = useQuery(
-    query,
-    {
-      variables: {},
-      // Setting this value to true will make the component rerender when
-      // the "networkStatus" changes, so we are able to know if it is fetching
-      // more data
-      notifyOnNetworkStatusChange: true,
-    }
-  )
+  const listArticles = useQuery(query);
 
   return (
     <>
       <Base title="Articles by GraphQl">
-        <h1 className="font-mono">News by {process.env.NEXT_PUBLIC_JSON_API}/graphql</h1>
+        <h1 className="font-mono mb-4">News by {process.env.NEXT_PUBLIC_DRUPAL_URL}/graphql</h1>
+        <ArticlesGraphqlList listArticles={listArticles} />
       </Base>
     </>
   )
@@ -60,19 +50,15 @@ export default ArticlesGraphql;
 export async function getServerSideProps() {
   try {
     const apolloClient = initializeApollo();
-    console.log("apolloClient: ", apolloClient);
-    console.log("query: ", query);
     await apolloClient.query({
       query: query,
-      variables: {}
     });
     return {
       props: {
-        initialApolloState: {}
+        initialApolloState: apolloClient.cache.extract(),
       }
     }
   } catch (e) {
     console.log("catch: ", e);
   }
-
 }

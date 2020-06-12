@@ -6,7 +6,7 @@ const Articles = (props) => {
   return (
     <>
       <Base title="Articles">
-        <h1 className="font-mono">News by {process.env.NEXT_PUBLIC_JSON_API}</h1>
+        <h1 className="font-mono">News by {process.env.NEXT_PUBLIC_DRUPAL_URL}</h1>
         <ArticlesList articles={data} />
       </Base>
     </>
@@ -17,7 +17,7 @@ export default Articles;
 
 export async function getServerSideProps() {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_JSON_API}/jsonapi/node/article`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_DRUPAL_URL}/jsonapi/node/article`);
     const { data } = await res.json();
     return { props: { data } }
   } catch (e) {

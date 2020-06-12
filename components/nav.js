@@ -10,7 +10,7 @@ const Nav = () => {
       </li>
       <li className="mr-6">
         <Link href="/articles">
-          <a className="text-blue-500 hover:text-blue-800">Articles</a>
+          <a className="text-blue-500 hover:text-blue-800">Articles by JSON API</a>
         </Link>
       </li>
       <li className="mr-6">
