@@ -52,3 +52,4 @@ const ArticlesGraphqlList = (props) => {
 };
 
 export default ArticlesGraphqlList;
+
