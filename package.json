@@ -20,7 +20,6 @@
     "apollo-cache-inmemory": "^1.6.6",
     "apollo-client": "^2.6.10",
     "apollo-link-http": "^1.5.17",
-    "gh-pages": "^3.0.0",
     "graphql": "^15.1.0",
     "graphql-tag": "^2.10.3",
     "next": "^9.4.4",
@@ -35,7 +34,8 @@
     "tailwindcss": "^1.4.6"
   },
   "devDependencies": {
-    "postcss-loader": "^3.0.0",
-    "babel-plugin-graphql-tag": "^2.5.0"
+    "babel-plugin-graphql-tag": "^2.5.0",
+    "gh-pages": "^3.0.0",
+    "postcss-loader": "^3.0.0"
   }
 }
