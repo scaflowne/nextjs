@@ -1,12 +1,9 @@
 {
-  "homepage": "http://scaflowne.github.io/nextjs",
   "name": "nextjs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "dev": "next",
     "build": "next build",
     "start": "next start"
@@ -35,7 +32,6 @@
   },
   "devDependencies": {
     "babel-plugin-graphql-tag": "^2.5.0",
-    "gh-pages": "^3.0.0",
     "postcss-loader": "^3.0.0"
   }
 }
