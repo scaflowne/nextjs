@@ -11,6 +11,7 @@ query {
   nodeQuery {
     entities {
       ... on NodeArticle {
+        nid,
         title,
         body {
           summary
