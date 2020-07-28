@@ -9,7 +9,9 @@ const Base = (props) => {
       </Head>
       <div className="container mx-auto">
         <Nav />
-        {props.children}
+        <div className="px-2 md:px-0">
+          {props.children}
+        </div>
       </div>
     </>
   )

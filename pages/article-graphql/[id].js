@@ -1,4 +1,5 @@
 import Base from '@layouts/Base';
+import './article-graphql.scss';
 
 import { initializeApollo } from '@lib/apolloClient';
 import gql from 'graphql-tag';
@@ -14,8 +15,10 @@ query getNodeArticle($nid: String!) {
           value
         },
         fieldImage {
+          derivative(style: BANNER1280350 ) {
+            url
+          }
           alt
-          url
         },
         fieldTags {
           entity {
@@ -39,26 +42,36 @@ const ArticleGraphql = (props) => {
     error,
     data: {
       nodeQuery: {
-        entities
+        entities: {
+          0: {
+            title,
+            fieldImage,
+            body
+          }
+        }
       }
     }
   } = articleGraphqlNode;
 
+  console.log("articleGraphqlNode", articleGraphqlNode);
+
   let image = "";
 
   if (!loading) {
-    if (entities[0].fieldImage) {
+    if (fieldImage) {
       image = (
         <div className="w-1/1">
-          <img src={entities[0].fieldImage.url} />
+          <img src={fieldImage.derivative.url} />
         </div>
       );
     }
   }
 
   return (
-    <Base>
+    <Base title={title}>
       {image}
+      <h1>{title}</h1>
+      <div className="article__body" dangerouslySetInnerHTML={{ __html: body.value }} />
     </Base>
   )
 }

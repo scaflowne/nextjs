@@ -1,15 +1,13 @@
-import Router from 'next/router';
 import Link from 'next/link';
 
 const ArticlesGraphqlList = (props) => {
+
   const {
+    pager,
     listArticles: {
-      loading,
-      error,
-      data: {
-        nodeQuery: {
-          entities
-        }
+      nodeQuery: {
+        count,
+        entities
       }
     }
   } = props;
@@ -18,7 +16,7 @@ const ArticlesGraphqlList = (props) => {
     <p> NO existen resultados </p>
   );
 
-  if (!loading) {
+  if (count) {
     render = entities.map((article) => {
       const { nid, title, body, fieldImage } = article;
 
@@ -26,7 +24,7 @@ const ArticlesGraphqlList = (props) => {
       if (fieldImage) {
         image = (
           <div className="w-1/1">
-            <img src={fieldImage.url} />
+            <img src={fieldImage.derivative.url} />
           </div>
         );
       }

@@ -1,0 +1,9 @@
+.article {
+  &__body {
+    ul {
+      margin: 16px 0;
+      padding-left: 40px;
+      list-style: disc;
+    }
+  }
+}
